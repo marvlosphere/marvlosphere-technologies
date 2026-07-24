@@ -71,6 +71,7 @@ function ParticleBg() {
       vy: (Math.random() - 0.5) * 0.25,
       o: Math.random() * 0.5 + 0.1,
     }));
+    
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
