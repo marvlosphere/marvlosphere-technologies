@@ -1,0 +1,29 @@
+{
+  "order": 3,
+  "name": "Marvie",
+  "badge": "🎥 Video & Audio Calling",
+  "tagline": "A product of Marvlosphere Technologies",
+  "description": "Marvie is a self-hosted video conferencing platform for teams and communities who want Zoom-grade calling without Zoom's friction. Anyone with a link joins instantly — no sign-up, no downloads, no waiting room unless the host wants one.",
+  "url": "https://marviecall.vercel.app",
+  "ctaLabel": "Visit Marvie",
+  "chips": ["End-to-end encryption", "Automatic cloud recording", "Scales to 100 participants"],
+  "features": [
+    {
+      "title": "Link-based rooms",
+      "body": "Cryptographically random, collision-checked room codes — no arbitrary URL can spawn a room, and nobody signs up on either end."
+    },
+    {
+      "title": "End-to-end encryption",
+      "body": "Opt-in E2EE using per-call keys that never touch the server, keeping conversations private even from the platform itself."
+    },
+    {
+      "title": "Automatic cloud recording",
+      "body": "Every call records server-side into cloud storage, independent of any participant's browser staying open."
+    }
+  ],
+  "audience": [
+    { "label": "Remote Teams", "desc": "Zoom-grade calls without seat licenses or install friction." },
+    { "label": "Communities & Events", "desc": "Instant link-based rooms for meetups, classes, and large gatherings." },
+    { "label": "Hosts & Moderators", "desc": "Waiting rooms, co-hosts, and bulk-admit controls built for scale." }
+  ]
+}

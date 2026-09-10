@@ -1,0 +1,29 @@
+{
+  "order": 1,
+  "name": "FUTABallot",
+  "badge": "Flagship Product",
+  "tagline": "A product of Marvlosphere Technologies",
+  "description": "FUTABallot is a secure digital election platform built for Nigerian universities. It serves student unions, electoral committees, and university administrations that need to run credible, verifiable elections without the cost and delay of paper ballots.",
+  "url": "https://futaballot.site",
+  "ctaLabel": "Visit FUTABallot",
+  "chips": ["Secure token auth", "SHA-256 ballot integrity", "Real-time results dashboard"],
+  "features": [
+    {
+      "title": "Secure voting",
+      "body": "Encrypted ballots and hardened infrastructure keep every vote confidential and tamper-resistant from cast to count."
+    },
+    {
+      "title": "Token-based authentication",
+      "body": "Each eligible voter receives a unique access token, ensuring one person, one vote — without exposing personal identity in the results."
+    },
+    {
+      "title": "Real-time integrity dashboard",
+      "body": "Administrators and observers watch turnout and system integrity live, making the entire election transparent and auditable."
+    }
+  ],
+  "audience": [
+    { "label": "Student Unions", "desc": "Credible union elections students can trust." },
+    { "label": "Electoral Committees", "desc": "Tools to run and audit each vote end to end." },
+    { "label": "University Admins", "desc": "Oversight and integrity reporting in real time." }
+  ]
+}
