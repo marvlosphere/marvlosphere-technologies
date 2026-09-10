@@ -2,11 +2,12 @@ import fs from "fs";
 import path from "path";
 import Link from "next/link";
 import { company } from "../../lib/company";
+import ElectraSection from "../../components/ElectraSection";
 
 export const metadata = {
   title: "Products",
   description:
-    "Products by Marvlosphere Technologies — secure, transparent software for African institutions.",
+    "Electra — Marvlosphere's next-generation election platform, the successor to FUTABallot.",
 };
 
 // Each product is its own file in data/products/*.json — see
@@ -41,6 +42,8 @@ export default function ProductsPage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-16">
+        <ElectraSection />
+
         <div className="space-y-14">
           {products.map((p) => (
             <div key={p.url}>
