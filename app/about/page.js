@@ -44,9 +44,8 @@ export default function AboutPage() {
           <div className="rounded-xl border-l-4 border-gold bg-slate-50 p-6">
             <h2 className="text-xl font-bold text-navy">Ownership</h2>
             <p className="mt-2 text-base text-slate-700">
-              Marvlosphere Technologies is the parent company of FUTABallot, a
-              secure digital election platform for Nigerian universities.
-              FUTABallot is developed, owned, and operated by Marvlosphere
+              FUTABallot, a secure digital election platform for Nigerian
+              universities, is developed, owned, and operated by Marvlosphere
               Technologies.
             </p>
           </div>

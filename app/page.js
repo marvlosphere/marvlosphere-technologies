@@ -2,17 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-
-/* ─── company constants (mirrors your lib/company) ─── */
-const company = {
-  name: "Marvlosphere Technologies",
-  tagline: "Secure Digital Infrastructure for African Institutions",
-  email: "hello@marvlosphere.com",
-  phone: "+234 800 000 0000",
-  phoneHref: "tel:+2348000000000",
-  productUrl: "https://futaballot.site",
-  cac: "9652069",
-};
+import { company } from "../lib/company";
 
 /* ─── tiny hook: count up a number on mount ─── */
 function useCountUp(target, duration = 1400, delay = 0) {
@@ -350,8 +340,6 @@ function StepCard({ num, icon, title, body, color, delay = 0 }) {
    MAIN PAGE
 ═══════════════════════════════════════════ */
 export default function HomePage() {
-  const [scrollY, setScrollY] = useState(0);
-  const [menuOpen, setMenuOpen] = useState(false);
   const uniCount = useCountUp(3, 1200, 700);
   const integrityCount = useCountUp(100, 1400, 900);
   const electionsCount = useCountUp(12, 1600, 1100);
@@ -360,16 +348,20 @@ export default function HomePage() {
   const [aboutRef, aboutIn] = useInView();
   const [ctaRef, ctaIn] = useInView();
 
-  useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <>
-      {/* ── GLOBAL STYLES ── */}
-      <style>{`
+      {/* ── GLOBAL STYLES ──
+          dangerouslySetInnerHTML (not JSX children) is required here:
+          React HTML-escapes text-node children when rendering server-side
+          ('  -> &#x27;, & -> &amp;), but browsers parse <style> as raw text
+          with no entity decoding — so a plain <style>{`...`}</style> sends
+          broken, entity-encoded CSS on first paint (breaking this exact
+          @import) and then fails hydration on every load, forcing React
+          to discard and rebuild the whole page. dangerouslySetInnerHTML
+          sets the same raw string on both server and client, avoiding the
+          mismatch entirely. Safe here since the content is fully static,
+          developer-authored CSS with no user input. */}
+      <style dangerouslySetInnerHTML={{ __html: `
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -450,81 +442,33 @@ export default function HomePage() {
         .hero-title-word:nth-child(4) { animation-delay: 0.45s; }
         .hero-title-word:nth-child(5) { animation-delay: 0.55s; }
 
-        .nav-link {
-          font-size: 13px;
-          color: rgba(255,255,255,0.55);
-          text-decoration: none;
-          cursor: pointer;
-          transition: color 0.2s;
-          padding: 4px 0;
-          position: relative;
-        }
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          bottom: 0; left: 0;
-          width: 0; height: 1px;
-          background: #F0C847;
-          transition: width 0.25s ease;
-        }
-        .nav-link:hover { color: #F0C847; }
-        .nav-link:hover::after { width: 100%; }
-
         @media (prefers-reduced-motion: reduce) {
           *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
         }
-      `}</style>
+
+        /* Responsive fixes — this page previously had no mobile handling
+           at all: fixed-width elements and un-collapsing grids caused
+           horizontal overflow (measured 549px content in a 375px
+           viewport) and unreadably squeezed columns on phones. */
+        @media (max-width: 900px) {
+          .hero-orbit-wrap { display: none; }
+          .grid-3, .grid-4, .grid-2, .grid-2-main, .grid-2-auto {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      ` }} />
 
       <CursorGlow />
 
       <div style={{ background: "#060D1F", minHeight: "100vh" }}>
 
-        {/* ══ NAVBAR ══ */}
-        <nav style={{
-          position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
-          padding: "0 40px",
-          height: 64,
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          background: scrollY > 40 ? "rgba(6,13,31,0.85)" : "transparent",
-          backdropFilter: scrollY > 40 ? "blur(24px) saturate(160%)" : "none",
-          WebkitBackdropFilter: scrollY > 40 ? "blur(24px) saturate(160%)" : "none",
-          borderBottom: scrollY > 40 ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
-          transition: "all 0.4s ease",
-        }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, animation: "fadeUp 0.5s ease" }}>
-            <div style={{
-              width: 34, height: 34, borderRadius: 9,
-              background: "linear-gradient(135deg,#C9A84C,#F0C847)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontWeight: 800, fontSize: 14, color: "#060D1F",
-              boxShadow: "0 2px 12px rgba(240,200,71,0.35)",
-            }}>M</div>
-            <span style={{ fontWeight: 700, fontSize: 15, letterSpacing: -0.3 }}>Marvlosphere</span>
-          </div>
-
-          <div style={{ display: "flex", gap: 32, animation: "fadeUp 0.5s 0.1s ease both" }}>
-            {["Products", "How it works", "Trust", "About", "Contact"].map((l) => (
-              <a key={l} className="nav-link">{l}</a>
-            ))}
-          </div>
-
-          <button style={{
-            background: "linear-gradient(135deg,#C9A84C,#F0C847)",
-            color: "#060D1F", fontWeight: 700, fontSize: 13,
-            padding: "9px 20px", borderRadius: 10, border: "none", cursor: "pointer",
-            transition: "transform 0.15s, box-shadow 0.15s",
-            animation: "fadeUp 0.5s 0.2s ease both",
-            boxShadow: "0 2px 16px rgba(240,200,71,0.3)",
-          }}
-            onMouseEnter={(e) => { e.target.style.transform = "translateY(-2px)"; e.target.style.boxShadow = "0 6px 24px rgba(240,200,71,0.45)"; }}
-            onMouseLeave={(e) => { e.target.style.transform = ""; e.target.style.boxShadow = "0 2px 16px rgba(240,200,71,0.3)"; }}
-          >
-            Get in touch
-          </button>
-        </nav>
-
         {/* ══ HERO ══ */}
-        <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", padding: "100px 40px 80px", overflow: "hidden" }}>
+        {/* Site-wide nav/CTA live in the shared <Header> from layout.js — this
+            page used to render its own on top of it, which caused two
+            overlapping, unclickable navbars. Top padding is reduced from the
+            original 100px since the real Header now occupies flow space
+            above this section instead of floating over it. */}
+        <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", padding: "48px 40px 80px", overflow: "hidden" }}>
           {/* animated blobs */}
           {[
             { w: 700, h: 700, bg: "radial-gradient(circle,rgba(201,168,76,0.1) 0%,transparent 70%)", r: "-150px", t: "-150px", dur: 18 },
@@ -579,6 +523,7 @@ export default function HomePage() {
               {"Digital infrastructure for".split(" ").map((w, i) => (
                 <span key={i} className="hero-title-word">{w} </span>
               ))}
+              {" "}
               <span style={{
                 display: "inline-block",
                 background: "linear-gradient(135deg,#C9A84C,#F0C847,#C9A84C)",
@@ -599,31 +544,33 @@ export default function HomePage() {
             </p>
 
             <div style={{ display: "flex", gap: 12, marginTop: 36, animation: "fadeUp 0.6s 0.65s ease both" }}>
-              <button style={{
+              <Link href="/products" style={{
                 background: "linear-gradient(135deg,#C9A84C,#F0C847)",
                 color: "#060D1F", fontWeight: 700, fontSize: 15,
                 padding: "14px 28px", borderRadius: 13, border: "none", cursor: "pointer",
                 boxShadow: "0 4px 24px rgba(240,200,71,0.35)",
                 transition: "transform 0.15s, box-shadow 0.15s",
+                textDecoration: "none", display: "inline-block",
               }}
                 onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 10px 36px rgba(240,200,71,0.5)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.transform = ""; e.currentTarget.style.boxShadow = "0 4px 24px rgba(240,200,71,0.35)"; }}
               >
                 Explore our products
-              </button>
-              <button style={{
+              </Link>
+              <Link href="/about" style={{
                 background: "rgba(255,255,255,0.06)",
                 backdropFilter: "blur(16px)",
                 color: "#fff", fontWeight: 600, fontSize: 15,
                 padding: "14px 26px", borderRadius: 13,
                 border: "1px solid rgba(255,255,255,0.12)", cursor: "pointer",
                 transition: "all 0.2s ease",
+                textDecoration: "none", display: "inline-block",
               }}
                 onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.11)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.25)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)"; }}
               >
                 About us →
-              </button>
+              </Link>
             </div>
 
             {/* STATS */}
@@ -641,8 +588,10 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* ORBIT VISUAL */}
-          <div style={{ position: "relative", zIndex: 2, animation: "scaleIn 0.8s 0.3s ease both" }}>
+          {/* ORBIT VISUAL — hidden below 900px; its fixed 480px width plus
+              negatively-offset floating cards caused horizontal overflow
+              on mobile (measured: 549px content in a 375px viewport). */}
+          <div className="hero-orbit-wrap" style={{ position: "relative", zIndex: 2, animation: "scaleIn 0.8s 0.3s ease both" }}>
             <OrbitVisual />
           </div>
         </section>
@@ -689,7 +638,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16 }}>
+          <div className="grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16 }}>
             <StepCard num="01" icon="🗂️" title="Register voters" color="#C9A84C" delay={0}
               body="Upload the voter roll. Each eligible student gets a single-use token delivered via WhatsApp — no login, no password." />
             <StepCard num="02" icon="🗳️" title="Cast ballots securely" color="#818cf8" delay={0.1}
@@ -706,7 +655,7 @@ export default function HomePage() {
             <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, letterSpacing: -1 }}>FUTABallot — built for Nigerian universities</h2>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 20 }}>
+          <div className="grid-2-main" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 20 }}>
             {/* MAIN PRODUCT CARD */}
             <Glass style={{ overflow: "hidden", padding: 0 }} hover={false}>
               <div style={{ padding: "32px 32px 0" }}>
@@ -802,12 +751,12 @@ export default function HomePage() {
         </section>
 
         {/* ══ TRUST NUMBERS ══ */}
-        <section style={{ padding: "0 40px 96px" }}>
+        <section id="trust" style={{ padding: "0 40px 96px" }}>
           <div style={{ marginBottom: 48, textAlign: "center" }}>
             <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 2.5, color: "#C9A84C", marginBottom: 12 }}>Why institutions trust us</div>
             <h2 style={{ fontSize: "clamp(28px,4vw,40px)", fontWeight: 800, letterSpacing: -1 }}>Security that goes deeper than compliance</h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16 }}>
+          <div className="grid-4" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16 }}>
             {[
               { icon: "🔒", val: "SHA-256", label: "Cryptographic hash on every exported result PDF" },
               { icon: "🛡️", val: "0", label: "Recorded integrity violations across all elections" },
@@ -825,7 +774,7 @@ export default function HomePage() {
 
         {/* ══ ABOUT ══ */}
         <section ref={aboutRef} style={{ padding: "0 40px 96px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+          <div className="grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
             {/* visual */}
             <div style={{
               opacity: aboutIn ? 1 : 0,
@@ -904,8 +853,8 @@ export default function HomePage() {
               </Glass>
 
               <div style={{ display: "flex", gap: 20, marginTop: 28 }}>
-                {[["Read our story →", "#C9A84C"], ["Trust & security →", "rgba(255,255,255,0.35)"]].map(([label, color]) => (
-                  <a key={label} href="#" style={{
+                {[["Read our story →", "#C9A84C", "/about"], ["Trust & security →", "rgba(255,255,255,0.35)", "#trust"]].map(([label, color, href]) => (
+                  <a key={label} href={href} style={{
                     fontSize: 14, color, fontWeight: 600, textDecoration: "none",
                     display: "inline-flex", alignItems: "center", gap: 5,
                     transition: "gap 0.2s",
@@ -921,7 +870,7 @@ export default function HomePage() {
 
         {/* ══ CTA ══ */}
         <section ref={ctaRef} style={{ padding: "0 40px 96px" }}>
-          <div style={{
+          <div className="grid-2-auto" style={{
             position: "relative", overflow: "hidden",
             background: "linear-gradient(120deg,#0D1B3E 0%,#111D3A 50%,#0a1525 100%)",
             border: "1px solid rgba(201,168,76,0.22)",
@@ -991,7 +940,7 @@ export default function HomePage() {
             <div style={{ display: "flex", flexDirection: "column", gap: 14, position: "relative" }}>
               {[
                 { icon: "✉", label: company.email, href: `mailto:${company.email}` },
-                { icon: "☎", label: company.phone, href: company.phoneHref },
+                { icon: "☎", label: company.phone, href: `tel:${company.phoneHref}` },
                 { icon: "🌐", label: "futaballot.site", href: company.productUrl },
               ].map(({ icon, label, href }) => (
                 <a key={label} href={href} style={{
@@ -1010,37 +959,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ══ FOOTER ══ */}
-        <footer style={{
-          borderTop: "1px solid rgba(255,255,255,0.06)",
-          padding: "28px 40px",
-          display: "flex", justifyContent: "space-between", alignItems: "center",
-          background: "rgba(255,255,255,0.01)",
-          backdropFilter: "blur(10px)",
-        }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{
-              width: 26, height: 26, borderRadius: 7,
-              background: "linear-gradient(135deg,#C9A84C,#F0C847)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontWeight: 800, fontSize: 11, color: "#060D1F",
-            }}>M</div>
-            <span style={{ fontSize: 12, color: "rgba(255,255,255,0.25)" }}>
-              © 2025 Marvlosphere Technologies · BN: {company.cac} · Lagos, Nigeria
-            </span>
-          </div>
-          <div style={{ display: "flex", gap: 24 }}>
-            {["Privacy", "Trust", "FAQ", "Contact"].map((l) => (
-              <a key={l} href="#" style={{
-                fontSize: 12, color: "rgba(255,255,255,0.3)", textDecoration: "none",
-                transition: "color 0.2s",
-              }}
-                onMouseEnter={(e) => e.currentTarget.style.color = "rgba(255,255,255,0.7)"}
-                onMouseLeave={(e) => e.currentTarget.style.color = "rgba(255,255,255,0.3)"}
-              >{l}</a>
-            ))}
-          </div>
-        </footer>
+        {/* Site-wide footer lives in the shared <Footer> from layout.js —
+            this page used to render its own duplicate footer here, with
+            different (fake) contact details than the real one. */}
 
       </div>
     </>

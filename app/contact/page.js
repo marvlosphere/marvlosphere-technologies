@@ -1,21 +1,12 @@
-"use client";
-
-import { useState } from "react";
 import { company } from "../../lib/company";
+import ContactForm from "../../components/ContactForm";
+
+export const metadata = {
+  title: "Contact",
+  description: `Contact ${company.name} — reach us by email, phone, or the form below.`,
+};
 
 export default function ContactPage() {
-  const [sent, setSent] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-
-  const handleChange = (e) =>
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // No backend: this is a front-end demonstration form.
-    setSent(true);
-  };
-
   return (
     <>
       <section className="bg-navy text-white">
@@ -74,75 +65,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Form */}
-          <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-            <h2 className="text-2xl font-bold text-navy">Send us a message</h2>
-            {sent ? (
-              <div className="mt-6 rounded-lg bg-green-50 p-6 text-green-800">
-                <p className="font-semibold">Thanks, {form.name || "there"}!</p>
-                <p className="mt-1 text-sm">
-                  Your message has been noted. We&rsquo;ll get back to you at{" "}
-                  {form.email || "your email"} soon. You can also reach us
-                  directly at {company.email}.
-                </p>
-              </div>
-            ) : (
-              <div className="mt-6 space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-slate-700">
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    value={form.name}
-                    onChange={handleChange}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-slate-900 focus:border-navy"
-                    placeholder="Your full name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-slate-700">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-slate-900 focus:border-navy"
-                    placeholder="you@example.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-slate-700">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    value={form.message}
-                    onChange={handleChange}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-4 py-2.5 text-slate-900 focus:border-navy"
-                    placeholder="How can we help?"
-                  />
-                </div>
-                <button
-                  onClick={handleSubmit}
-                  className="w-full rounded-lg bg-navy px-6 py-3 font-semibold text-white transition-colors hover:bg-navy-light"
-                >
-                  Send message
-                </button>
-                <p className="text-xs text-slate-400">
-                  This form is for demonstration and does not store data. Please
-                  email us directly for a guaranteed response.
-                </p>
-              </div>
-            )}
-          </div>
+          <ContactForm email={company.email} />
         </div>
       </section>
     </>
