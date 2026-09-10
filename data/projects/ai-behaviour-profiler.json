@@ -1,0 +1,8 @@
+{
+  "name": "AI-Based Network Behaviour Profiler",
+  "tag": "Anomaly detection",
+  "emoji": "🛡️",
+  "color": "#9333ea",
+  "description": "A statistical anomaly detector (rolling z-score / EWMA baselines) that profiles simulated traffic and flags injected attack patterns — DDoS, port scan, exfiltration, beaconing — in real time.",
+  "url": "https://ai-behaviour-profiler.vercel.app"
+}

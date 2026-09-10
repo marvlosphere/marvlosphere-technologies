@@ -1,0 +1,8 @@
+{
+  "name": "Packet Journey Visualizer",
+  "tag": "Simulation",
+  "emoji": "📦",
+  "color": "#2563eb",
+  "description": "Animates simulated packets traveling across 5 network topologies — Enterprise LAN, Home, Cloud/CDN, Microservices, ISP Backbone — with live stats and saved run history.",
+  "url": "https://packet-journey-visualizer-chi.vercel.app"
+}

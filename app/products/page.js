@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { company } from "../../lib/company";
 
 export const metadata = {
@@ -115,6 +116,12 @@ export default function ProductsPage() {
             secure digital tools for African institutions. New platforms are in
             development — check back as we grow.
           </p>
+          <Link
+            href="/projects"
+            className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-navy underline underline-offset-2 hover:text-gold-dark"
+          >
+            See our technical projects &amp; prototypes →
+          </Link>
         </div>
       </section>
     </>

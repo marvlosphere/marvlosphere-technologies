@@ -1,0 +1,8 @@
+{
+  "name": "Interactive Network Topology Builder",
+  "tag": "Design tool",
+  "emoji": "🕸️",
+  "color": "#0d9488",
+  "description": "Visually design a network — place nodes, draw links, define traffic routes — and export/import as JSON compatible with the Packet Journey Visualizer.",
+  "url": "https://topology-builder-snowy.vercel.app"
+}

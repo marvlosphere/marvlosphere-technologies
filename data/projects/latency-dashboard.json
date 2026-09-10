@@ -1,0 +1,8 @@
+{
+  "name": "Network Delay & Latency Dashboard",
+  "tag": "Analytics",
+  "emoji": "📊",
+  "color": "#d97706",
+  "description": "Simulates network delay and latency under configurable bandwidth, jitter, and packet-loss conditions, with live charts and real-world network presets.",
+  "url": "https://latency-dashboard-three.vercel.app"
+}
