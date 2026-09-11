@@ -3,7 +3,7 @@
   "name": "FUTABallot",
   "badge": "The Original",
   "tagline": "The platform that proved the model — now evolved into Electra",
-  "description": "FUTABallot is the secure digital election platform Marvlosphere first built for Nigerian universities, running real votes at a real university before its architecture was generalized into Electra. It still serves student unions, electoral committees, and university administrations that need to run credible, verifiable elections without the cost and delay of paper ballots.",
+  "description": "FUTABallot is the secure digital election platform Marvlosphere first built for Nigerian universities — the one whose architecture was later generalized into Electra. It still serves student unions, electoral committees, and university administrations that need to run credible, verifiable elections without the cost and delay of paper ballots.",
   "url": "https://futaballot.site",
   "ctaLabel": "Visit FUTABallot",
   "chips": ["Secure token auth", "SHA-256 ballot integrity", "Real-time results dashboard"],

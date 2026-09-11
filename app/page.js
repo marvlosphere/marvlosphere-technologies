@@ -221,8 +221,8 @@ function OrbitVisual() {
           fontSize: 22, fontWeight: 800, color: "#060D1F",
           marginBottom: 10,
           boxShadow: "0 4px 24px rgba(240,200,71,0.4)",
-        }}>F</div>
-        <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.9)" }}>FUTABallot</div>
+        }}>E</div>
+        <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.9)" }}>Electra</div>
         <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", marginTop: 3 }}>by Marvlosphere</div>
         <div style={{
           display: "flex", alignItems: "center", gap: 5, marginTop: 10,
@@ -540,7 +540,7 @@ export default function HomePage() {
               marginTop: 22, maxWidth: 480,
               animation: "fadeUp 0.6s 0.55s ease both",
             }}>
-              Marvlosphere Technologies builds secure, transparent, and reliable platforms trusted by universities, businesses, and institutions across Nigeria.
+              Marvlosphere Technologies builds secure, transparent, and reliable platforms — rooted in Nigeria, built for institutions across Africa.
             </p>
 
             <div style={{ display: "flex", gap: 12, marginTop: 36, animation: "fadeUp 0.6s 0.65s ease both" }}>
@@ -629,9 +629,7 @@ export default function HomePage() {
           <div style={{ textAlign: "center", marginBottom: 56 }}>
             <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 2.5, color: "#C9A84C", marginBottom: 12 }}>How it works</div>
             <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, letterSpacing: -1, lineHeight: 1.15 }}>
-              Three steps to a{" "}
-              <span style={{ color: "rgba(255,255,255,0.25)" }}>//</span>{" "}
-              tamper-proof election
+              Three steps to a tamper-proof election
             </h2>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.4)", marginTop: 14, maxWidth: 460, margin: "14px auto 0" }}>
               From voter registration to certified results, every step is cryptographically secured.
@@ -652,7 +650,7 @@ export default function HomePage() {
         <section style={{ padding: "0 40px 96px" }}>
           <div style={{ marginBottom: 52 }}>
             <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 2.5, color: "#C9A84C", marginBottom: 12 }}>Our product</div>
-            <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, letterSpacing: -1 }}>FUTABallot — built for Nigerian universities</h2>
+            <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, letterSpacing: -1 }}>Electra — verifiable elections at any scale</h2>
           </div>
 
           <div className="grid-2-main" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 20 }}>
@@ -665,14 +663,14 @@ export default function HomePage() {
                   borderRadius: 8, padding: "4px 12px", fontSize: 11, color: "#C9A84C", fontWeight: 600,
                   marginBottom: 18,
                 }}>
-                  🏫 University Election Platform
+                  🗳️ Next-Generation Election Platform
                 </div>
-                <h3 style={{ fontSize: 30, fontWeight: 800, letterSpacing: -0.8 }}>FUTABallot</h3>
+                <h3 style={{ fontSize: 30, fontWeight: 800, letterSpacing: -0.8 }}>Electra</h3>
                 <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", lineHeight: 1.75, marginTop: 10, maxWidth: 380 }}>
-                  A secure digital election platform for student unions — with token-auth voting, live integrity dashboards, and verifiable PDF results.
+                  The successor to FUTABallot — verifiable, large-scale elections for any institution, with token-auth voting, live integrity dashboards, and a tamper-proof audit trail.
                 </p>
                 <div style={{ display: "flex", gap: 14, marginTop: 20, flexWrap: "wrap" }}>
-                  {["Live voting", "SHA-256 verified", "WhatsApp OTP"].map((t) => (
+                  {["Live voting", "Unlimited elections", "2FA admin"].map((t) => (
                     <span key={t} style={{
                       fontSize: 11, color: "#4ade80", display: "flex", alignItems: "center", gap: 5,
                     }}>
@@ -693,12 +691,12 @@ export default function HomePage() {
                     flex: 1, background: "rgba(255,255,255,0.05)", borderRadius: 6,
                     padding: "4px 12px", fontSize: 10, color: "rgba(255,255,255,0.3)", marginLeft: 8,
                   }}>
-                    futaballot.site/results
+                    electra-roan.vercel.app
                   </div>
                 </div>
                 <div style={{ padding: 20 }}>
                   <div style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1, marginBottom: 14 }}>
-                    President — Live count
+                    President — Live count (demo data)
                   </div>
                   <VoteBar pct={62} color="#60a5fa" name="Adewale Osei" initials="AO" bg="#1e3a5f" />
                   <VoteBar pct={28} color="#4ade80" name="Ngozi Kalu" initials="NK" bg="#1e3a1e" />
@@ -811,9 +809,9 @@ export default function HomePage() {
                 {/* stat strip */}
                 <div style={{ display: "flex", gap: 12, marginTop: 20 }}>
                   {[
-                    { val: "Lagos", lab: "HQ, Nigeria" },
-                    { val: "2024", lab: "Founded" },
-                    { val: "2+", lab: "Live platforms" },
+                    { val: "Akure", lab: "HQ, Nigeria" },
+                    { val: "2025", lab: "Founded" },
+                    { val: "4", lab: "Live platforms" },
                   ].map(({ val, lab }) => (
                     <div key={val} style={{
                       flex: 1, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)",
@@ -932,7 +930,7 @@ export default function HomePage() {
                   onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.12)"; }}
                   onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.07)"; }}
                 >
-                  Visit FUTABallot ↗
+                  Visit Electra ↗
                 </a>
               </div>
             </div>
@@ -941,7 +939,7 @@ export default function HomePage() {
               {[
                 { icon: "✉", label: company.email, href: `mailto:${company.email}` },
                 { icon: "☎", label: company.phone, href: `tel:${company.phoneHref}` },
-                { icon: "🌐", label: "futaballot.site", href: company.productUrl },
+                { icon: "🌐", label: "electra-roan.vercel.app", href: company.productUrl },
               ].map(({ icon, label, href }) => (
                 <a key={label} href={href} style={{
                   display: "flex", alignItems: "center", gap: 12,

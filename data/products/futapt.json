@@ -3,13 +3,13 @@
   "name": "FUTAPT",
   "badge": "🏠 Student Housing Platform",
   "tagline": "A product of Marvlosphere Technologies",
-  "description": "FUTAPT is a housing marketplace built for Nigerian university students — starting with FUTA. It connects verified landlords, agents, and caretakers with students searching for off-campus rooms and bed spaces, replacing agent runaround and ghost listings with verified posters and secure, escrow-style payments.",
+  "description": "FUTAPT is a housing marketplace built for Nigerian university students — starting with FUTA. It connects verified landlords, agents, and caretakers with students searching for off-campus rooms and bed spaces, replacing agent runaround and ghost listings with verified listers and secure, escrow-style payments.",
   "url": "https://futapt.org",
   "ctaLabel": "Visit FUTAPT",
-  "chips": ["Verified posters", "Escrow payments", "Bed space matching"],
+  "chips": ["Verified listers", "Escrow payments", "Bed space matching"],
   "features": [
     {
-      "title": "Verified posters only",
+      "title": "Verified listers only",
       "body": "Every landlord, agent, and caretaker is personally verified before they can list — shown as a visible badge on every listing."
     },
     {
@@ -22,7 +22,7 @@
     }
   ],
   "audience": [
-    { "label": "Students", "desc": "Verified rooms and bed spaces near campus — no agent wahala, no ghost listings." },
+    { "label": "Students", "desc": "Verified rooms and bed spaces near campus — no agent runaround, no ghost listings." },
     { "label": "Landlords & Agents", "desc": "List verified properties, reach students directly, and get paid safely through the platform." },
     { "label": "Caretakers", "desc": "Post on behalf of landlords, manage inquiries, and track bookings in one place." }
   ]

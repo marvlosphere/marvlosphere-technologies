@@ -3,7 +3,7 @@ import { company } from "../../lib/company";
 export const metadata = {
   title: "About",
   description:
-    "Marvlosphere Technologies is a Nigerian software company and the parent company of FUTABallot, registered with the Corporate Affairs Commission (BN: 9652069).",
+    "Marvlosphere Technologies is a Nigerian software company and the parent company of Electra and FUTABallot, registered with the Corporate Affairs Commission (BN: 9652069).",
 };
 
 export default function AboutPage() {
@@ -44,21 +44,25 @@ export default function AboutPage() {
           <div className="rounded-xl border-l-4 border-gold bg-slate-50 p-6">
             <h2 className="text-xl font-bold text-navy">Ownership</h2>
             <p className="mt-2 text-base text-slate-700">
-              FUTABallot, a secure digital election platform for Nigerian
-              universities, is developed, owned, and operated by Marvlosphere
-              Technologies.
+              Electra and FUTABallot, secure digital election platforms for
+              institutions across Nigeria, are developed, owned, and operated
+              by Marvlosphere Technologies.
             </p>
           </div>
 
           <h2 className="text-2xl font-bold text-navy">What we do</h2>
           <p>
-            Our flagship platform, FUTABallot, delivers end-to-end digital
-            elections for student unions and university bodies — with
-            token-based voter authentication, secure ballot handling, and a
-            real-time integrity dashboard that lets stakeholders monitor the
-            fairness of a vote as it happens. Beyond FUTABallot, we continue to
-            develop tools that bring the same standards of security and
-            transparency to other institutional needs.
+            Our flagship platform, Electra, delivers end-to-end digital
+            elections for institutions of any size — two-factor-protected
+            administration, an audit trail the database itself won't let
+            anyone alter, and ballot secrecy that's structural rather than
+            a policy someone has to follow. Electra is the architecture
+            FUTABallot pioneered for student unions and university bodies,
+            generalized and hardened to run any number of elections at
+            once. FUTABallot itself still runs live elections today.
+            Beyond both, we continue to develop tools that bring the same
+            standards of security and transparency to other institutional
+            needs.
           </p>
         </div>
 
