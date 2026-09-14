@@ -41,15 +41,6 @@ export default function AboutPage() {
             accurate, data is protected, and every action can be verified.
           </p>
 
-          <div className="rounded-xl border-l-4 border-gold bg-slate-50 p-6">
-            <h2 className="text-xl font-bold text-navy">Ownership</h2>
-            <p className="mt-2 text-base text-slate-700">
-              Electra and FUTABallot, secure digital election platforms for
-              institutions across Nigeria, are developed, owned, and operated
-              by Marvlosphere Technologies.
-            </p>
-          </div>
-
           <h2 className="text-2xl font-bold text-navy">What we do</h2>
           <p>
             Our flagship platform, Electra, delivers end-to-end digital
@@ -67,7 +58,7 @@ export default function AboutPage() {
         </div>
 
         {/* Registration block */}
-        <div className="mt-12 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+        <div id="registration" className="mt-12 scroll-mt-24 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
           <h2 className="text-xl font-bold text-navy">
             Company Registration Details
           </h2>
@@ -99,6 +90,15 @@ export default function AboutPage() {
                 Country of Registration
               </dt>
               <dd className="mt-1 text-lg text-navy">{company.country}</dd>
+            </div>
+            <div className="sm:col-span-2">
+              <dt className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                Owned Products
+              </dt>
+              <dd className="mt-1 text-lg text-navy">
+                Electra and FUTABallot — developed, owned, and operated by{" "}
+                {company.name}.
+              </dd>
             </div>
           </dl>
         </div>

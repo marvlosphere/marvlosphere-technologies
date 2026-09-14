@@ -596,34 +596,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ══ MARQUEE ══ */}
-        <div style={{
-          overflow: "hidden", padding: "14px 0",
-          borderTop: "1px solid rgba(255,255,255,0.06)",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
-          background: "rgba(255,255,255,0.02)",
-          backdropFilter: "blur(10px)",
-          whiteSpace: "nowrap",
-        }}>
-          <div style={{ display: "inline-block", animation: "marqueeScroll 24s linear infinite" }}>
-            {[
-              "Secure token auth", "Real-time results dashboard",
-              "CAC Registered · BN: 9652069", "SHA-256 ballot integrity",
-              "WhatsApp OTP delivery", "Rate-limited & tamper-proof",
-              "Multi-tenant SaaS", "Atomic vote writes",
-              "Secure token auth", "Real-time results dashboard",
-              "CAC Registered · BN: 9652069", "SHA-256 ballot integrity",
-              "WhatsApp OTP delivery", "Rate-limited & tamper-proof",
-              "Multi-tenant SaaS", "Atomic vote writes",
-            ].map((item, i) => (
-              <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: 8, marginRight: 48, fontSize: 12, color: "rgba(255,255,255,0.35)" }}>
-                <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C9A84C", display: "inline-block" }} />
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-
         {/* ══ HOW IT WORKS ══ */}
         <section style={{ padding: "96px 40px" }}>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
@@ -748,27 +720,40 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ══ TRUST NUMBERS ══ */}
-        <section id="trust" style={{ padding: "0 40px 96px" }}>
-          <div style={{ marginBottom: 48, textAlign: "center" }}>
-            <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 2.5, color: "#C9A84C", marginBottom: 12 }}>Why institutions trust us</div>
-            <h2 style={{ fontSize: "clamp(28px,4vw,40px)", fontWeight: 800, letterSpacing: -1 }}>Security that goes deeper than compliance</h2>
-          </div>
-          <div className="grid-4" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16 }}>
+        {/* ══ MARQUEE ══ */}
+        {/* Placed after the product deep-dive (not right after the hero) so
+            these feature chips have context by the time a visitor sees
+            them — a bare jargon ticker before "How it works" meant
+            nothing on first load. The old "Why institutions trust us"
+            stat grid was cut from here: it repeated the same claims
+            (SHA-256, Atomic, CAC) already made one screen up in the
+            product side-cards. */}
+        <div style={{
+          overflow: "hidden", padding: "14px 0",
+          borderTop: "1px solid rgba(255,255,255,0.06)",
+          borderBottom: "1px solid rgba(255,255,255,0.06)",
+          background: "rgba(255,255,255,0.02)",
+          backdropFilter: "blur(10px)",
+          whiteSpace: "nowrap",
+        }}>
+          <div style={{ display: "inline-block", animation: "marqueeScroll 24s linear infinite" }}>
             {[
-              { icon: "🔒", val: "SHA-256", label: "Cryptographic hash on every exported result PDF" },
-              { icon: "🛡️", val: "0", label: "Recorded integrity violations across all elections" },
-              { icon: "⚡", val: "Atomic", label: "Vote writes — race conditions eliminated at the DB layer" },
-              { icon: "🇳🇬", val: "CAC", label: "Registered with the Corporate Affairs Commission of Nigeria" },
-            ].map(({ icon, val, label }) => (
-              <Glass key={val} style={{ padding: "28px 22px", textAlign: "center" }}>
-                <div style={{ fontSize: 30, marginBottom: 14 }}>{icon}</div>
-                <div style={{ fontSize: 26, fontWeight: 800, color: "#F0C847", letterSpacing: -1, marginBottom: 8 }}>{val}</div>
-                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.38)", lineHeight: 1.65 }}>{label}</div>
-              </Glass>
+              "Secure token auth", "Real-time results dashboard",
+              "CAC Registered · BN: 9652069", "SHA-256 ballot integrity",
+              "WhatsApp OTP delivery", "Rate-limited & tamper-proof",
+              "Multi-tenant SaaS", "Atomic vote writes",
+              "Secure token auth", "Real-time results dashboard",
+              "CAC Registered · BN: 9652069", "SHA-256 ballot integrity",
+              "WhatsApp OTP delivery", "Rate-limited & tamper-proof",
+              "Multi-tenant SaaS", "Atomic vote writes",
+            ].map((item, i) => (
+              <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: 8, marginRight: 48, fontSize: 12, color: "rgba(255,255,255,0.35)" }}>
+                <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C9A84C", display: "inline-block" }} />
+                {item}
+              </span>
             ))}
           </div>
-        </section>
+        </div>
 
         {/* ══ ABOUT ══ */}
         <section ref={aboutRef} style={{ padding: "0 40px 96px" }}>
@@ -839,7 +824,7 @@ export default function HomePage() {
                 We design and operate digital platforms that African institutions can trust — with security, transparency, and reliability at the core of everything we build.
               </p>
               <p style={{ fontSize: 15, color: "rgba(255,255,255,0.48)", lineHeight: 1.85, marginTop: 14 }}>
-                From student election systems to multi-tenant SaaS infrastructure, every product we ship is engineered for the real constraints and real stakes of the African institutional context.
+                From student elections to student housing and everyday team communication, every product we ship is engineered for the real constraints and real stakes of the African institutional context.
               </p>
 
               <Glass style={{
@@ -851,7 +836,7 @@ export default function HomePage() {
               </Glass>
 
               <div style={{ display: "flex", gap: 20, marginTop: 28 }}>
-                {[["Read our story →", "#C9A84C", "/about"], ["Trust & security →", "rgba(255,255,255,0.35)", "#trust"]].map(([label, color, href]) => (
+                {[["Read our story →", "#C9A84C", "/about"], ["Trust & security →", "rgba(255,255,255,0.35)", "/about#registration"]].map(([label, color, href]) => (
                   <a key={label} href={href} style={{
                     fontSize: 14, color, fontWeight: 600, textDecoration: "none",
                     display: "inline-flex", alignItems: "center", gap: 5,

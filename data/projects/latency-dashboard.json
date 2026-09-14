@@ -1,4 +1,5 @@
 {
+  "order": 3,
   "name": "Network Delay & Latency Dashboard",
   "tag": "Analytics",
   "emoji": "📊",

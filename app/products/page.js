@@ -130,13 +130,19 @@ export default function ProductsPage() {
             secure digital tools for African institutions. New platforms are in
             development — check back as we grow.
           </p>
+        </div>
+
+        {/* Separate from the commercial roadmap above: these are research
+            prototypes, not products in development. */}
+        <p className="mt-6 text-center text-sm text-slate-500">
+          Looking for something less commercial? See our{" "}
           <Link
             href="/projects"
-            className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-navy underline underline-offset-2 hover:text-gold-dark"
+            className="font-semibold text-navy underline underline-offset-2 hover:text-gold-dark"
           >
-            See our technical projects &amp; prototypes →
+            technical projects &amp; prototypes →
           </Link>
-        </div>
+        </p>
       </section>
     </>
   );

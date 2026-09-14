@@ -17,7 +17,9 @@ function loadProjects() {
   const files = fs.readdirSync(dir).filter((f) => f.endsWith(".json"));
   return files
     .map((f) => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")))
-    .sort((a, b) => a.name.localeCompare(b.name));
+    // `order` is optional — omit it and your project just sorts
+    // alphabetically after any that do specify one.
+    .sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || a.name.localeCompare(b.name));
 }
 
 export default function ProjectsPage() {
