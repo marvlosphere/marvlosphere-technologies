@@ -12,6 +12,7 @@ export const metadata = {
 
 const EMAIL = "miraclemarvelous80@gmail.com";
 const GITHUB = "https://github.com/marvlosphere99-web";
+const LINKEDIN = "https://www.linkedin.com/in/marvelous-bayeri-3b7148371/";
 
 const supportingProjects = [
   {
@@ -48,7 +49,7 @@ const skills = [
     ],
   },
   {
-    title: "Cybersecurity",
+    title: "Security-Minded Design",
     items: [
       "Row-level access control verified with adversarial API testing, not just UI checks",
       "Immutable audit trails enforced at the database layer",
@@ -157,6 +158,28 @@ export default function MarvelousPortfolio() {
             </div>
           </div>
 
+          {/* Not a screenshot, not a claim to take on faith — a link to
+              the actual public page, live, right now. This is the kind
+              of independently-checkable proof the whole project is
+              built around, so it gets a direct link rather than an
+              embed that could go stale or render inconsistently. */}
+          <a
+            href="https://futaballot.site/integrity"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 flex items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-slate-50 px-6 py-5 transition-colors hover:border-gold hover:bg-white"
+          >
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wide text-gold-dark">
+                Don&apos;t take my word for it
+              </p>
+              <p className="mt-1 font-semibold text-navy">
+                Open the live, public integrity dashboard — updates every 10 seconds
+              </p>
+            </div>
+            <span className="shrink-0 text-lg text-gold-dark">↗</span>
+          </a>
+
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="https://electra-roan.vercel.app/"
@@ -253,11 +276,16 @@ export default function MarvelousPortfolio() {
               Federal University of Technology, Akure (FUTA). Everything on
               this page — the election platform, the security tooling, the
               simulation systems — was built alongside that degree, not
-              instead of it. I&apos;m self-taught in backend development
-              and security, and I lean heavily on AI-assisted development
-              to move fast without cutting corners on the parts that
-              actually matter: data integrity, access control, and being
-              able to prove a system does what it claims to do.
+              instead of it. I&apos;m self-taught in backend development,
+              and my interest in cybersecurity is where the security
+              discipline in my work comes from — it shows up as secure
+              system design (access control, audit trails, data
+              architecture that makes certain failures structurally
+              impossible), not penetration testing. I lean heavily on
+              AI-assisted development to move fast without cutting
+              corners on the parts that actually matter: data integrity,
+              access control, and being able to prove a system does what
+              it claims to do.
             </p>
           </div>
         </section>
@@ -275,6 +303,14 @@ export default function MarvelousPortfolio() {
                 className="inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-3 font-semibold text-navy-dark transition-colors hover:bg-gold-dark"
               >
                 {EMAIL}
+              </a>
+              <a
+                href={LINKEDIN}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                LinkedIn ↗
               </a>
               <a
                 href={GITHUB}
