@@ -174,12 +174,12 @@ function OrbitVisual() {
         }} />
       ))}
 
-      {/* orbit dots */}
+      {/* orbit dots — one per product vertical, not one product's own icon set */}
       {[
         { icon: "🗳️", size: 290, dur: 7, delay: 0, color: "rgba(201,168,76,0.25)" },
-        { icon: "🔐", size: 180, dur: 5, delay: -2, color: "rgba(99,130,255,0.25)" },
-        { icon: "✅", size: 420, dur: 11, delay: -4, color: "rgba(34,197,94,0.2)" },
-        { icon: "📊", size: 420, dur: 14, delay: -7, color: "rgba(251,146,60,0.2)" },
+        { icon: "🏠", size: 180, dur: 5, delay: -2, color: "rgba(99,130,255,0.25)" },
+        { icon: "🎥", size: 420, dur: 11, delay: -4, color: "rgba(34,197,94,0.2)" },
+        { icon: "🎨", size: 420, dur: 14, delay: -7, color: "rgba(251,146,60,0.2)" },
       ].map((o, i) => (
         <div key={i} style={{
           position: "absolute", top: "50%", left: "50%",
@@ -221,20 +221,20 @@ function OrbitVisual() {
           fontSize: 22, fontWeight: 800, color: "#060D1F",
           marginBottom: 10,
           boxShadow: "0 4px 24px rgba(240,200,71,0.4)",
-        }}>E</div>
-        <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.9)" }}>Electra</div>
-        <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", marginTop: 3 }}>by Marvlosphere</div>
+        }}>M</div>
+        <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.9)" }}>Marvlosphere</div>
+        <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)", marginTop: 3 }}>5 products, est. 2025</div>
         <div style={{
           display: "flex", alignItems: "center", gap: 5, marginTop: 10,
           background: "rgba(34,197,94,0.12)", border: "1px solid rgba(34,197,94,0.25)",
           borderRadius: 8, padding: "3px 8px", fontSize: 9, color: "#4ade80",
         }}>
           <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#4ade80", animation: "pulse 1.2s ease-in-out infinite", display: "inline-block" }} />
-          Live
+          Building
         </div>
       </Glass>
 
-      {/* floating stat cards */}
+      {/* floating stat cards — company-level facts, not one product's demo data */}
       <Glass style={{
         position: "absolute", bottom: 40, left: -20,
         padding: "12px 16px", borderRadius: 14,
@@ -242,9 +242,9 @@ function OrbitVisual() {
         animationDelay: "-2s",
         minWidth: 120,
       }} hover={false}>
-        <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginBottom: 4 }}>Votes cast</div>
-        <div style={{ fontSize: 20, fontWeight: 700, color: "#F0C847", letterSpacing: -1 }}>1,247</div>
-        <div style={{ fontSize: 9, color: "rgba(255,255,255,0.3)" }}>Real-time</div>
+        <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginBottom: 4 }}>Products</div>
+        <div style={{ fontSize: 20, fontWeight: 700, color: "#F0C847", letterSpacing: -1 }}>5</div>
+        <div style={{ fontSize: 9, color: "rgba(255,255,255,0.3)" }}>Live & shipped</div>
       </Glass>
 
       <Glass style={{
@@ -254,84 +254,10 @@ function OrbitVisual() {
         animationDelay: "-4s",
         minWidth: 130,
       }} hover={false}>
-        <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginBottom: 4 }}>Integrity score</div>
-        <div style={{ fontSize: 20, fontWeight: 700, color: "#4ade80", letterSpacing: -1 }}>100%</div>
-        <div style={{ fontSize: 9, color: "rgba(255,255,255,0.3)" }}>SHA-256 verified</div>
+        <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginBottom: 4 }}>Registered</div>
+        <div style={{ fontSize: 20, fontWeight: 700, color: "#4ade80", letterSpacing: -1 }}>CAC</div>
+        <div style={{ fontSize: 9, color: "rgba(255,255,255,0.3)" }}>BN: 9652069</div>
       </Glass>
-    </div>
-  );
-}
-
-/* ════════════════════════════════════════════
-   VOTE BAR animated
-═══════════════════════════════════════════ */
-function VoteBar({ pct, color, name, initials, bg }) {
-  const [w, setW] = useState(0);
-  const [ref, inView] = useInView();
-  useEffect(() => { if (inView) setTimeout(() => setW(pct), 200); }, [inView, pct]);
-  return (
-    <div ref={ref} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 150 }}>
-        <div style={{
-          width: 28, height: 28, borderRadius: "50%",
-          background: bg, display: "flex", alignItems: "center",
-          justifyContent: "center", fontSize: 10, fontWeight: 700, color,
-          flexShrink: 0,
-        }}>{initials}</div>
-        <span style={{ fontSize: 11, color: "rgba(255,255,255,0.7)" }}>{name}</span>
-      </div>
-      <div style={{ flex: 1, height: 6, background: "rgba(255,255,255,0.06)", borderRadius: 3, overflow: "hidden" }}>
-        <div style={{
-          height: "100%", width: `${w}%`, borderRadius: 3,
-          background: `linear-gradient(90deg, ${color}88, ${color})`,
-          transition: "width 1s cubic-bezier(0.34,1.56,0.64,1)",
-          boxShadow: `0 0 8px ${color}55`,
-        }} />
-      </div>
-      <span style={{ fontSize: 10, color: "rgba(255,255,255,0.5)", minWidth: 32, textAlign: "right" }}>{pct}%</span>
-    </div>
-  );
-}
-
-/* ════════════════════════════════════════════
-   STEP CARD
-═══════════════════════════════════════════ */
-function StepCard({ num, icon, title, body, color, delay = 0 }) {
-  const [ref, inView] = useInView();
-  const [hov, setHov] = useState(false);
-  return (
-    <div ref={ref} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)} style={{
-      opacity: inView ? 1 : 0,
-      transform: inView ? "translateY(0)" : "translateY(32px)",
-      transition: `opacity 0.6s ${delay}s ease, transform 0.6s ${delay}s ease`,
-      background: hov ? "rgba(255,255,255,0.07)" : "rgba(255,255,255,0.04)",
-      backdropFilter: "blur(20px)",
-      WebkitBackdropFilter: "blur(20px)",
-      border: hov ? `1px solid ${color}55` : "1px solid rgba(255,255,255,0.08)",
-      borderRadius: 20, padding: "32px 28px", position: "relative", overflow: "hidden",
-      cursor: "default",
-      boxShadow: hov ? `0 8px 40px ${color}18, inset 0 1px 0 rgba(255,255,255,0.07)` : "inset 0 1px 0 rgba(255,255,255,0.04)",
-      transition: `opacity 0.6s ${delay}s ease, transform 0.6s ${delay}s ease, all 0.3s ease`,
-    }}>
-      {/* shimmer on hover */}
-      {hov && (
-        <div style={{
-          position: "absolute", top: 0, left: "-60%", width: "50%", height: "100%",
-          background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent)",
-          animation: "shimmerPass 0.8s ease forwards",
-          pointerEvents: "none",
-        }} />
-      )}
-      <div style={{ fontSize: 52, fontWeight: 800, color: "rgba(255,255,255,0.04)", lineHeight: 1, marginBottom: 20 }}>{num}</div>
-      <div style={{
-        width: 46, height: 46, borderRadius: 13,
-        background: `${color}18`, border: `1px solid ${color}30`,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        fontSize: 22, marginBottom: 16,
-        boxShadow: `0 0 20px ${color}20`,
-      }}>{icon}</div>
-      <div style={{ fontSize: 16, fontWeight: 600, marginBottom: 8 }}>{title}</div>
-      <div style={{ fontSize: 13, color: "rgba(255,255,255,0.45)", lineHeight: 1.75 }}>{body}</div>
     </div>
   );
 }
@@ -340,9 +266,13 @@ function StepCard({ num, icon, title, body, color, delay = 0 }) {
    MAIN PAGE
 ═══════════════════════════════════════════ */
 export default function HomePage() {
-  const uniCount = useCountUp(3, 1200, 700);
-  const integrityCount = useCountUp(100, 1400, 900);
-  const electionsCount = useCountUp(12, 1600, 1100);
+  // Company-level stats, not tied to any one product — this page used to
+  // lead with election-specific numbers (universities served, vote
+  // integrity, elections run), which made the whole homepage read as an
+  // election-software landing page even after Marvlosphere grew to 5
+  // products across 4 unrelated verticals.
+  const productsCount = useCountUp(5, 1200, 700);
+  const industriesCount = useCountUp(4, 1400, 900);
 
   const [heroRef, heroIn] = useInView({ threshold: 0 });
   const [aboutRef, aboutIn] = useInView();
@@ -576,9 +506,9 @@ export default function HomePage() {
             {/* STATS */}
             <div style={{ display: "flex", gap: 40, marginTop: 56, animation: "fadeUp 0.6s 0.75s ease both" }}>
               {[
-                { num: uniCount + "+", label: "Universities served" },
-                { num: integrityCount + "%", label: "Vote integrity" },
-                { num: electionsCount + "+", label: "Elections run" },
+                { num: productsCount + "+", label: "Products shipped" },
+                { num: industriesCount, label: "Industries served" },
+                { num: "2025", label: "Founded" },
               ].map(({ num, label }) => (
                 <div key={label}>
                   <div style={{ fontSize: 28, fontWeight: 800, color: "#F0C847", letterSpacing: -1 }}>{num}</div>
@@ -596,138 +526,68 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ══ HOW IT WORKS ══ */}
-        <section style={{ padding: "96px 40px" }}>
-          <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 2.5, color: "#C9A84C", marginBottom: 12 }}>How it works</div>
-            <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, letterSpacing: -1, lineHeight: 1.15 }}>
-              Three steps to a tamper-proof election
-            </h2>
-            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.4)", marginTop: 14, maxWidth: 460, margin: "14px auto 0" }}>
-              From voter registration to certified results, every step is cryptographically secured.
+        {/* ══ PRODUCT SHOWCASE ══ */}
+        {/* This used to be a full Electra deep-dive (browser mock, live vote
+            bars, 3 election-specific feature cards) — the right depth for
+            /products, but wrong for a company homepage: it made Home read
+            as an election-software landing page even after Marvlosphere
+            grew to 5 products across elections, housing, communication,
+            and commerce. Home now teases all 5 briefly; the full narrative
+            for each (Electra and Barny Branding get the deepest treatment)
+            lives on /products. */}
+        <section style={{ padding: "0 40px 96px" }}>
+          <div style={{ marginBottom: 40 }}>
+            <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 2.5, color: "#C9A84C", marginBottom: 12 }}>Our products</div>
+            <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, letterSpacing: -1 }}>Five products, one standard</h2>
+            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.42)", marginTop: 12, maxWidth: 520 }}>
+              Elections, student housing, communication, commerce — every product is built to the same bar: secure by default, verifiable, and honest about what it claims to do.
             </p>
           </div>
 
-          <div className="grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16 }}>
-            <StepCard num="01" icon="🗂️" title="Register voters" color="#C9A84C" delay={0}
-              body="Upload the voter roll. Each eligible student gets a single-use token delivered via WhatsApp — no login, no password." />
-            <StepCard num="02" icon="🗳️" title="Cast ballots securely" color="#818cf8" delay={0.1}
-              body="Voters authenticate with their token. Votes are atomically recorded, structurally separated from identities — secrecy by design." />
-            <StepCard num="03" icon="📊" title="Verify results live" color="#4ade80" delay={0.2}
-              body="The live dashboard shows real-time counts. PDF results carry a SHA-256 hash anyone can verify — proof tallies were never altered." />
-          </div>
-        </section>
-
-        {/* ══ PRODUCT SHOWCASE ══ */}
-        <section style={{ padding: "0 40px 96px" }}>
-          <div style={{ marginBottom: 52 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: 2.5, color: "#C9A84C", marginBottom: 12 }}>Our product</div>
-            <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, letterSpacing: -1 }}>Electra — verifiable elections at any scale</h2>
-          </div>
-
-          <div className="grid-2-main" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 20 }}>
-            {/* MAIN PRODUCT CARD */}
-            <Glass style={{ overflow: "hidden", padding: 0 }} hover={false}>
-              <div style={{ padding: "32px 32px 0" }}>
-                <div style={{
-                  display: "inline-flex", alignItems: "center", gap: 6,
-                  background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.2)",
-                  borderRadius: 8, padding: "4px 12px", fontSize: 11, color: "#C9A84C", fontWeight: 600,
-                  marginBottom: 18,
-                }}>
-                  🗳️ Next-Generation Election Platform
-                </div>
-                <h3 style={{ fontSize: 30, fontWeight: 800, letterSpacing: -0.8 }}>Electra</h3>
-                <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", lineHeight: 1.75, marginTop: 10, maxWidth: 380 }}>
-                  The successor to FUTABallot — verifiable, large-scale elections for any institution, with token-auth voting, live integrity dashboards, and a tamper-proof audit trail.
-                </p>
-                <div style={{ display: "flex", gap: 14, marginTop: 20, flexWrap: "wrap" }}>
-                  {["Live voting", "Unlimited elections", "2FA admin"].map((t) => (
-                    <span key={t} style={{
-                      fontSize: 11, color: "#4ade80", display: "flex", alignItems: "center", gap: 5,
-                    }}>
-                      <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* browser mock */}
-              <div style={{ marginTop: 28, background: "rgba(0,0,0,0.25)", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "10px 16px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-                  {["#ff5f57", "#febc2e", "#28c840"].map((c) => (
-                    <div key={c} style={{ width: 9, height: 9, borderRadius: "50%", background: c }} />
-                  ))}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16 }}>
+            {[
+              { icon: "🗳️", name: "Electra", tagline: "Verifiable, large-scale elections for any institution.", url: "https://electra-roan.vercel.app/" },
+              { icon: "🏫", name: "FUTABallot", tagline: "The original — still running live university elections today.", url: "https://futaballot.site" },
+              { icon: "🏠", name: "FUTAPT", tagline: "Verified student housing marketplace, starting with FUTA.", url: "https://futapt.org" },
+              { icon: "🎥", name: "Marvie", tagline: "Zoom-grade video calling — no accounts, no installs, just a link.", url: "https://marviecall.vercel.app" },
+              { icon: "🎨", name: "Barny Branding", tagline: "Quote-based commerce for branded-product businesses.", url: "https://barny.online" },
+            ].map((p) => (
+              <a
+                key={p.name}
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <Glass style={{ padding: "24px 22px", height: "100%" }}>
                   <div style={{
-                    flex: 1, background: "rgba(255,255,255,0.05)", borderRadius: 6,
-                    padding: "4px 12px", fontSize: 10, color: "rgba(255,255,255,0.3)", marginLeft: 8,
-                  }}>
-                    electra-roan.vercel.app
-                  </div>
-                </div>
-                <div style={{ padding: 20 }}>
-                  <div style={{ fontSize: 10, color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: 1, marginBottom: 14 }}>
-                    President — Live count (demo data)
-                  </div>
-                  <VoteBar pct={62} color="#60a5fa" name="Adewale Osei" initials="AO" bg="#1e3a5f" />
-                  <VoteBar pct={28} color="#4ade80" name="Ngozi Kalu" initials="NK" bg="#1e3a1e" />
-                  <VoteBar pct={10} color="#f87171" name="Emeka Madu" initials="EM" bg="#3a1e1e" />
-                </div>
-                <div style={{
-                  display: "flex", justifyContent: "space-around",
-                  background: "rgba(34,197,94,0.05)", borderTop: "1px solid rgba(34,197,94,0.1)",
-                  padding: "14px 16px",
-                }}>
-                  {[
-                    { val: "1,247", lab: "Votes cast", color: "#F0C847" },
-                    { val: "100%", lab: "Integrity", color: "#4ade80" },
-                    { val: "SHA-256", lab: "Hash verified", color: "#60a5fa" },
-                    { val: "0", lab: "Anomalies", color: "#4ade80" },
-                  ].map(({ val, lab, color }) => (
-                    <div key={lab} style={{ textAlign: "center" }}>
-                      <div style={{ fontSize: 13, fontWeight: 700, color }}>{val}</div>
-                      <div style={{ fontSize: 9, color: "rgba(255,255,255,0.35)", marginTop: 2 }}>{lab}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Glass>
-
-            {/* SIDE CARDS */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              {[
-                { icon: "🔐", color: "#818cf8", title: "Ballot secrecy by architecture", body: "Votes and voter identities live in structurally unlinked tables. There's no join that maps who voted for whom — secrecy is structural, not just policy." },
-                { icon: "⚡", color: "#facc15", title: "Atomic race-condition protection", body: "A PostgreSQL UPDATE WHERE has_voted = false guarantees no voter can cast twice — even under simultaneous requests." },
-                { icon: "📲", color: "#4ade80", title: "WhatsApp token delivery", body: "Single-use tokens delivered via WhatsApp Business API — no app install, no email. Maximum reach on Nigerian campuses." },
-              ].map(({ icon, color, title, body }) => (
-                <Glass key={title} style={{ padding: "22px 24px", flex: 1 }}>
-                  <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
-                    <div style={{
-                      width: 42, height: 42, borderRadius: 11, flexShrink: 0,
-                      background: `${color}15`, border: `1px solid ${color}28`,
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                      fontSize: 18, boxShadow: `0 0 16px ${color}18`,
-                    }}>{icon}</div>
-                    <div>
-                      <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 6 }}>{title}</div>
-                      <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", lineHeight: 1.7 }}>{body}</div>
-                    </div>
-                  </div>
+                    width: 42, height: 42, borderRadius: 11,
+                    background: "rgba(201,168,76,0.12)", border: "1px solid rgba(201,168,76,0.25)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: 19, marginBottom: 14,
+                  }}>{p.icon}</div>
+                  <div style={{ fontSize: 16, fontWeight: 700 }}>{p.name}</div>
+                  <p style={{ fontSize: 12.5, color: "rgba(255,255,255,0.42)", lineHeight: 1.6, marginTop: 8 }}>{p.tagline}</p>
+                  <span style={{ fontSize: 12, color: "#F0C847", fontWeight: 600, marginTop: 14, display: "inline-flex", alignItems: "center", gap: 4 }}>
+                    Visit ↗
+                  </span>
                 </Glass>
-              ))}
-            </div>
+              </a>
+            ))}
+          </div>
+
+          <div style={{ marginTop: 28, textAlign: "center" }}>
+            <Link href="/products" style={{ fontSize: 14, color: "rgba(255,255,255,0.55)", fontWeight: 600, textDecoration: "none" }}>
+              See full details on every product →
+            </Link>
           </div>
         </section>
 
         {/* ══ MARQUEE ══ */}
-        {/* Placed after the product deep-dive (not right after the hero) so
-            these feature chips have context by the time a visitor sees
-            them — a bare jargon ticker before "How it works" meant
-            nothing on first load. The old "Why institutions trust us"
-            stat grid was cut from here: it repeated the same claims
-            (SHA-256, Atomic, CAC) already made one screen up in the
-            product side-cards. */}
+        {/* Cross-product claims, not one product's feature list — this used
+            to read entirely as Electra/FUTABallot jargon (SHA-256 ballot
+            integrity, WhatsApp OTP) presented as if it described the whole
+            company. */}
         <div style={{
           overflow: "hidden", padding: "14px 0",
           borderTop: "1px solid rgba(255,255,255,0.06)",
@@ -738,14 +598,12 @@ export default function HomePage() {
         }}>
           <div style={{ display: "inline-block", animation: "marqueeScroll 24s linear infinite" }}>
             {[
-              "Secure token auth", "Real-time results dashboard",
-              "CAC Registered · BN: 9652069", "SHA-256 ballot integrity",
-              "WhatsApp OTP delivery", "Rate-limited & tamper-proof",
-              "Multi-tenant SaaS", "Atomic vote writes",
-              "Secure token auth", "Real-time results dashboard",
-              "CAC Registered · BN: 9652069", "SHA-256 ballot integrity",
-              "WhatsApp OTP delivery", "Rate-limited & tamper-proof",
-              "Multi-tenant SaaS", "Atomic vote writes",
+              "5 live products", "CAC Registered · BN: 9652069",
+              "Row-level security", "Real-time systems",
+              "Built in Nigeria", "4 industries served",
+              "5 live products", "CAC Registered · BN: 9652069",
+              "Row-level security", "Real-time systems",
+              "Built in Nigeria", "4 industries served",
             ].map((item, i) => (
               <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: 8, marginRight: 48, fontSize: 12, color: "rgba(255,255,255,0.35)" }}>
                 <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#C9A84C", display: "inline-block" }} />
@@ -796,7 +654,7 @@ export default function HomePage() {
                   {[
                     { val: "Akure", lab: "HQ, Nigeria" },
                     { val: "2025", lab: "Founded" },
-                    { val: "4", lab: "Live platforms" },
+                    { val: "5", lab: "Live platforms" },
                   ].map(({ val, lab }) => (
                     <div key={val} style={{
                       flex: 1, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)",
@@ -884,7 +742,7 @@ export default function HomePage() {
                 <span style={{
                   background: "linear-gradient(135deg,#C9A84C,#F0C847)",
                   WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-                }}>secure digital elections</span>
+                }}>secure, trustworthy software</span>
                 {" "}to your institution?
               </h2>
               <p style={{ fontSize: 16, color: "rgba(255,255,255,0.42)", marginTop: 14 }}>
@@ -904,7 +762,7 @@ export default function HomePage() {
                 >
                   Contact us today
                 </a>
-                <a href={company.productUrl} target="_blank" rel="noopener noreferrer" style={{
+                <Link href="/products" style={{
                   background: "rgba(255,255,255,0.07)",
                   backdropFilter: "blur(16px)",
                   color: "#fff", fontWeight: 600, fontSize: 15,
@@ -915,8 +773,8 @@ export default function HomePage() {
                   onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.12)"; }}
                   onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.07)"; }}
                 >
-                  Visit Electra ↗
-                </a>
+                  Explore our products →
+                </Link>
               </div>
             </div>
 
@@ -924,7 +782,7 @@ export default function HomePage() {
               {[
                 { icon: "✉", label: company.email, href: `mailto:${company.email}` },
                 { icon: "☎", label: company.phone, href: `tel:${company.phoneHref}` },
-                { icon: "🌐", label: "electra-roan.vercel.app", href: company.productUrl },
+                { icon: "🌐", label: "marvlosphere.xyz/products", href: "/products" },
               ].map(({ icon, label, href }) => (
                 <a key={label} href={href} style={{
                   display: "flex", alignItems: "center", gap: 12,
