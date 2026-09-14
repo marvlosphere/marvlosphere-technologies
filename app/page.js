@@ -824,7 +824,7 @@ export default function HomePage() {
                 We design and operate digital platforms that African institutions can trust — with security, transparency, and reliability at the core of everything we build.
               </p>
               <p style={{ fontSize: 15, color: "rgba(255,255,255,0.48)", lineHeight: 1.85, marginTop: 14 }}>
-                From student elections to student housing and everyday team communication, every product we ship is engineered for the real constraints and real stakes of the African institutional context.
+                From student elections and student housing to everyday communication and branding commerce, every product we ship is engineered for the real constraints and real stakes of the African institutional context.
               </p>
 
               <Glass style={{

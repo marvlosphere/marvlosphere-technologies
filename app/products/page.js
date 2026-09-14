@@ -3,11 +3,12 @@ import path from "path";
 import Link from "next/link";
 import { company } from "../../lib/company";
 import ElectraSection from "../../components/ElectraSection";
+import BarnyBrandingSection from "../../components/BarnyBrandingSection";
 
 export const metadata = {
   title: "Products",
   description:
-    "Electra — Marvlosphere's next-generation election platform, the successor to FUTABallot.",
+    "Electra, Marvlosphere's next-generation election platform, and Barny Branding, our quote-based branding commerce platform.",
 };
 
 // Each product is its own file in data/products/*.json — see
@@ -43,6 +44,7 @@ export default function ProductsPage() {
 
       <section className="mx-auto max-w-6xl px-5 py-16">
         <ElectraSection />
+        <BarnyBrandingSection />
 
         <div className="space-y-14">
           {products.map((p) => (
