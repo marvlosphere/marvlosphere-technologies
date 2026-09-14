@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { company } from "../../lib/company";
+import { company } from "../../../lib/company";
 
 export const metadata = {
   title: "Projects",

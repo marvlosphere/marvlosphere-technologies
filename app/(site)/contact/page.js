@@ -1,5 +1,5 @@
-import { company } from "../../lib/company";
-import ContactForm from "../../components/ContactForm";
+import { company } from "../../../lib/company";
+import ContactForm from "../../../components/ContactForm";
 
 export const metadata = {
   title: "Contact",

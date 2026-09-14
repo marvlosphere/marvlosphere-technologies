@@ -1,9 +1,9 @@
 import fs from "fs";
 import path from "path";
 import Link from "next/link";
-import { company } from "../../lib/company";
-import ElectraSection from "../../components/ElectraSection";
-import BarnyBrandingSection from "../../components/BarnyBrandingSection";
+import { company } from "../../../lib/company";
+import ElectraSection from "../../../components/ElectraSection";
+import BarnyBrandingSection from "../../../components/BarnyBrandingSection";
 
 export const metadata = {
   title: "Products",

@@ -1,6 +1,4 @@
 import "./globals.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { company } from "../lib/company";
 
 export const metadata = {
@@ -29,14 +27,14 @@ export const metadata = {
   },
 };
 
+// Deliberately bare — no Header/Footer here. Every company-site route
+// gets those from app/(site)/layout.js instead, so the personal
+// portfolio at /marvelous (a sibling of the (site) group) can render
+// without any Marvlosphere company branding.
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="flex min-h-screen flex-col font-sans">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </body>
+      <body className="flex min-h-screen flex-col font-sans">{children}</body>
     </html>
   );
 }

@@ -1,4 +1,4 @@
-import { company } from "../../lib/company";
+import { company } from "../../../lib/company";
 
 export const metadata = {
   title: "Privacy Policy",

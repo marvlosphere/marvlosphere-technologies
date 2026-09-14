@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { company } from "../lib/company";
+import { company } from "../../lib/company";
 
 /* ─── tiny hook: count up a number on mount ─── */
 function useCountUp(target, duration = 1400, delay = 0) {
