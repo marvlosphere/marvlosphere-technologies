@@ -83,7 +83,7 @@ export default function ProjectsPage() {
           <p className="text-sm text-slate-600">
             Source code for these projects is available on{" "}
             <a
-              href="https://github.com/marvlosphere99-web/defense"
+              href="https://github.com/marvlosphere/defense"
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold text-navy underline underline-offset-2 hover:text-gold-dark"

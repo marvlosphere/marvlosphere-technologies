@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 const EMAIL = "miraclemarvelous80@gmail.com";
-const GITHUB = "https://github.com/marvlosphere99-web";
+const GITHUB = "https://github.com/marvlosphere";
 const LINKEDIN = "https://www.linkedin.com/in/marvelous-bayeri-3b7148371/";
 
 const supportingProjects = [
